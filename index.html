@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Welpen Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🐶 Welpen Tracker</h1>
+        <button id="add-dog-btn">+ Neu</button>
+    </header>
+
+    <main>
+        <!-- TAB 1: WELPEN -->
+        <section id="view-welpen" class="view active">
+            <div id="app-container"></div>
+        </section>
+
+        <!-- TAB 2: STATISTIKEN -->
+        <section id="view-statistiken" class="view">
+            <div class="stats-selector">
+                <label>Welpe auswählen:</label>
+                <select id="stats-dog-select"></select>
+            </div>
+            <div id="stats-container">
+                <p class="empty-msg">Wähle einen Hund aus.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- BOTTOM NAVIGATION -->
+    <nav class="bottom-nav">
+        <button class="nav-btn active" onclick="switchTab('welpen')">
+            <span>🐕</span> Welpen
+        </button>
+        <button class="nav-btn" onclick="switchTab('statistiken')">
+            <span>📊</span> Statistiken
+        </button>
+    </nav>
+
+    <!-- MODAL (Formular zum Hinzufügen/Bearbeiten) -->
+    <div id="dog-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h2 id="modal-title">Hund hinzufügen</h2>
+            <input type="hidden" id="edit-dog-id">
+            
+            <label>Name des Welpen:</label>
+            <input type="text" id="input-name" placeholder="z.B. Bello">
+            
+            <label>Geburtstag:</label>
+            <input type="date" id="input-birthday">
+            
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="closeModal()">Abbrechen</button>
+                <button class="btn-save" onclick="saveDog()">Speichern</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
